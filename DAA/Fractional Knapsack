@@ -1,0 +1,29 @@
+##Fractional Knapsack##
+
+wt[4]=int(input("Enter Values:"))
+val[4]=int(input("Enter Values:"))
+capacity=int(input("Enter Values:"))
+class ItemValue:
+    def __init__(self, wt, val):
+        self.wt = wt
+        self.val = val
+        self.cost = val / wt
+
+def fractionalKnapSack(wt, val, capacity):
+    items = sorted([ItemValue(wt[i], val[i]) for i in range(len(wt))], key=lambda x: x.cost, reverse=True)
+    totalValue = 0
+    for item in items:
+        if capacity >= item.wt:
+            capacity -= item.wt
+            totalValue += item.val
+        else:
+            totalValue += item.val * (capacity / item.wt)
+            break
+    return totalValue
+
+# Example usage
+#wt = [10, 60, 20, 40]
+#val = [50, 40, 100, 150]
+#capacity = 50
+maxValue = fractionalKnapSack(wt, val, capacity)
+print("Maximum value in Knapsack =", maxValue)
