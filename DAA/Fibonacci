@@ -1,0 +1,29 @@
+##Recursive##
+def fibonacci(n):
+    # Base case: If n is 0 or 1, return n (0 or 1)
+    if n <= 1:
+        return n
+    # Recursive case: Call the fibonacci function on the previous two numbers and add them
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+# Main part of the program
+n = int(input("Enter a number: "))
+print("Result is", fibonacci(n))
+
+
+
+
+##Non Recursive##
+# Main part of the program
+a, b = 0, 1  # Initialize the first two numbers of the Fibonacci sequence
+n = int(input("Enter a number: "))
+
+# Print the first two numbers of the sequence if n is greater than 1
+if n >= 1:
+    print(a, b, end=" ")
+
+# Loop to generate and print the Fibonacci sequence up to n terms
+for i in range(2, n):
+    c = a + b  # Calculate the next number in the sequence
+    print(c, end=" ")  # Print the number
+    a, b = b, c  # Update a and b to move one step forward in the sequence
